@@ -8,7 +8,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE nState OF
+      <ST><![CDATA[motorRelay();
+
+CASE nState OF
 	
 	0:
 		;
@@ -25,6 +27,11 @@ END_VAR
 		
 	30:
 		IF motorRelay.Pulse(T#5S) THEN
+			nState := 0;
+		END_IF
+		
+	40:
+		IF motorRelay.PulseAcyclic(T#5S) THEN
 			nState := 0;
 		END_IF
 		

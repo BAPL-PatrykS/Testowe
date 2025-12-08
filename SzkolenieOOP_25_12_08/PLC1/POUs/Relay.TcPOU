@@ -5,10 +5,16 @@
 VAR
 	bOutput	AT%Q*	: BOOL;
 	tonPulse		: TON;
+	tonPulseAcyclic	: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[tonPulseAcyclic();
+
+IF tonPulseAcyclic.Q THEN
+	SwitchOff();
+	tonPulseAcyclic(IN := FALSE);
+END_IF]]></ST>
     </Implementation>
     <Method Name="Pulse" Id="{1937db57-4c05-4d40-92ff-67b59d714bee}">
       <Declaration><![CDATA[METHOD Pulse : BOOL
@@ -26,6 +32,20 @@ ELSIF tonPulse.Q THEN
 	tonPulse(IN := FALSE);
 	Pulse := TRUE;
 END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="PulseAcyclic" Id="{890da05d-c0eb-4dfb-98d9-20ced296544c}">
+      <Declaration><![CDATA[METHOD PulseAcyclic : BOOL
+VAR_INPUT
+	tPulseTime	: TIME;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SwitchOn();
+tonPulseAcyclic.IN := TRUE;
+tonPulseAcyclic.PT := tPulseTime;
+
+PulseAcyclic := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="SwitchOff" Id="{71d54ee8-6e93-447d-8209-bf17b3119904}">
