@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{a256f1ed-2fdb-47cd-bbe2-4ea5cda6d818}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM MAIN
+  <POU Name="Relay" Id="{5085b1cf-4d06-4906-8007-1329dfffaf0f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Relay
 VAR
-	motorRelay	: Relay;
+	bOutput	AT%Q*	: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
