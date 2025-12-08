@@ -61,6 +61,11 @@
       <Resolution>Tc3_Module, 3.4.5.0 (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PLC1.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>

@@ -9,5 +9,27 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Method Name="SwitchOff" Id="{71d54ee8-6e93-447d-8209-bf17b3119904}">
+      <Declaration><![CDATA[METHOD SwitchOff : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bOutput := FALSE;
+
+SwitchOff := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOn" Id="{c87da857-2505-48e7-b65d-b923003a41ae}">
+      <Declaration><![CDATA[METHOD SwitchOn : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bOutput := TRUE;
+
+SwitchOn := TRUE;]]></ST>
+      </Implementation>
+    </Method>
   </POU>
 </TcPlcObject>
