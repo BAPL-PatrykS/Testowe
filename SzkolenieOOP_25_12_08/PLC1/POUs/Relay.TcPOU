@@ -4,11 +4,30 @@
     <Declaration><![CDATA[FUNCTION_BLOCK Relay
 VAR
 	bOutput	AT%Q*	: BOOL;
+	tonPulse		: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Method Name="Pulse" Id="{1937db57-4c05-4d40-92ff-67b59d714bee}">
+      <Declaration><![CDATA[METHOD Pulse : BOOL
+VAR_INPUT
+	tPulseTime	: TIME;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tonPulse(IN := TRUE, PT:= tPulseTime);
+
+IF NOT tonPulse.Q THEN
+	SwitchOn();
+ELSIF tonPulse.Q THEN
+	SwitchOff();
+	tonPulse(IN := FALSE);
+	Pulse := TRUE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="SwitchOff" Id="{71d54ee8-6e93-447d-8209-bf17b3119904}">
       <Declaration><![CDATA[METHOD SwitchOff : BOOL
 VAR_INPUT
