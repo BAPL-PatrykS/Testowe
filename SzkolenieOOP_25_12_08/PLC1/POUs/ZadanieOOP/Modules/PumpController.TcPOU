@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="PumpController" Id="{c47f4e83-f94f-490b-a79c-636f640ba23b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PumpController
+VAR
+	volumePump					: VolumePump;
+	eState						: ( DISABLED, ENABLED, PUMPING, PUMPING_COMPLETE );
+	requestButton				: ButtonNO;
+	juiceSetter					: Potentiometer;
+	ledDisplay					: AnalogLedDisplay010;
+	fJuiceSetpointInMililiters	: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[volumePump();
+
+CASE eState OF
+	
+	DISABLED:
+		;
+		
+	ENABLED:
+		ledDisplay.SetValue(juiceSetter.ActualValue);
+		IF requestButton.IsPressed THEN
+			fJuiceSetpointInMililiters := F_Scale ( juiceSetter.ActualValue, 0, 32767, 0, 10_000 );
+			eState := PUMPING;
+		END_IF
+		
+	PUMPING:
+		ledDisplay.SetValue( TO_INT (F_Scale ( fJuiceSetpointInMililiters - volumePump.PumpedJuiceInMililiters, 0, 10_000, 0, 32767 ) ) );
+		volumePump.Start();
+		IF volumePump.PumpedJuiceInMililiters >= fJuiceSetpointInMililiters THEN
+			volumePump.Reset();
+			eState := PUMPING_COMPLETE;
+		END_IF
+		
+	PUMPING_COMPLETE:
+		;
+		
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

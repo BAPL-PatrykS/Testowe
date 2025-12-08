@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="SignalTower" Id="{a49b9225-0cc8-4d5e-bdae-213ddc81bbc9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SignalTower
+VAR
+	lightGreen	: Relay;
+	lightRed	: Relay;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="GreenLightState" Id="{f1a7e554-94b8-4cda-8e4c-9796f7d2cf80}">
+      <Declaration><![CDATA[PROPERTY GreenLightState : BOOL]]></Declaration>
+      <Get Name="Get" Id="{b7bb1740-9fe1-482f-b384-16034c8643b7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[GreenLightState := lightGreen.State;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="RedLightState" Id="{a263101a-c590-4d5a-b8fc-385a84e625e0}">
+      <Declaration><![CDATA[PROPERTY RedLightState : BOOL]]></Declaration>
+      <Get Name="Get" Id="{3993bef8-ffef-4e3a-8d3a-704df8851182}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[RedLightState := lightRed.State;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="SwitchOffGreen" Id="{0b6544a2-3c56-4468-a238-1826e6f830e8}">
+      <Declaration><![CDATA[METHOD SwitchOffGreen : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[lightGreen.SwitchOff();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOffRed" Id="{e965210f-3d87-48d6-869c-5f759f4e9602}">
+      <Declaration><![CDATA[METHOD SwitchOffRed : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[lightRed.SwitchOff();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOnGreen" Id="{b3dd5ded-19cc-4e26-8f25-83a7797197f5}">
+      <Declaration><![CDATA[METHOD SwitchOnGreen : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[lightGreen.SwitchOn();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOnRed" Id="{46b231c6-54b4-4b38-84a7-5c86fe779ab4}">
+      <Declaration><![CDATA[METHOD SwitchOnRed : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[lightRed.SwitchOn();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

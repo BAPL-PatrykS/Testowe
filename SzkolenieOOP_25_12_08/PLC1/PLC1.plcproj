@@ -46,12 +46,22 @@
     <Compile Include="POUs\ZadanieOOP\Devices\Potentiometer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\ZadanieOOP\Modules\PumpController.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\ZadanieOOP\Modules\SignalTower.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\ZadanieOOP\Modules\VolumePump.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Zadanie\FB_JuicePumpSimulator.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Zadanie\GVL_IO.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
     </Compile>
     <Compile Include="POUs\Zadanie\P_JuicePump.TcPOU">
       <SubType>Code</SubType>
@@ -64,6 +74,7 @@
     <Folder Include="POUs\ZadanieOOP" />
     <Folder Include="POUs\Zadanie" />
     <Folder Include="POUs\ZadanieOOP\Devices" />
+    <Folder Include="POUs\ZadanieOOP\Modules" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

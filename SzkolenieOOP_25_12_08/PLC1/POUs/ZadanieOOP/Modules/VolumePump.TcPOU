@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="VolumePump" Id="{f0a7faee-552d-4aa6-b633-5280f4c5f76f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK VolumePump
+VAR
+	pump						: Relay;
+	eState						: ( RESET, START );
+	fPumpedJuiceInMililiters	: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE eState OF
+	
+	RESET:
+		pump.SwitchOff();
+		fPumpedJuiceInMililiters := 0;
+		
+	START:
+		pump.SwitchOn();
+		fPumpedJuiceInMililiters := fPumpedJuiceInMililiters + 10;
+		
+END_CASE]]></ST>
+    </Implementation>
+    <Property Name="IsPumping" Id="{945d2fef-a9ee-4910-b578-d8558166eb0b}">
+      <Declaration><![CDATA[PROPERTY IsPumping : BOOL]]></Declaration>
+      <Get Name="Get" Id="{7a6066f1-3e65-4e99-a393-19de9e0eae3a}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsPumping := pump.State;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="PumpedJuiceInMililiters" Id="{697b894b-ea98-4121-8d4f-72ecccba8c42}">
+      <Declaration><![CDATA[PROPERTY PumpedJuiceInMililiters : REAL]]></Declaration>
+      <Get Name="Get" Id="{2441b756-a90f-456a-96f6-1dc737a393aa}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[PumpedJuiceInMililiters := fPumpedJuiceInMililiters;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Reset" Id="{fae4d1d0-68cf-4747-9897-b0426c8c086b}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[eState := RESET;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Start" Id="{74a2eead-d63f-4aaa-8c08-33ad3a461f4d}">
+      <Declaration><![CDATA[METHOD Start : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[eState := START;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
