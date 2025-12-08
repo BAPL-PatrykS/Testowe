@@ -5,10 +5,18 @@
 VAR
 	nState		: UINT;
 	motorRelay	: Relay;
+	incVar		: IncrementVar;
+	incVarInst	: IncrementVarInst;
+	bTest		: BOOL;
+	nVal1		: INT;
+	nVal2		: INT;
+	tempSensor	: TemperatureSensor;
+	temperature	: REAL;
+	offset		: REAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[motorRelay();
+      <ST><![CDATA[motorRelay.Cyclic();
 
 CASE nState OF
 	
@@ -35,7 +43,19 @@ CASE nState OF
 			nState := 0;
 		END_IF
 		
-END_CASE]]></ST>
+END_CASE
+
+IF bTest THEN
+	bTest := FALSE;
+	nVal1 := incVar.Increment();
+	nVal2 := incVarInst.Increment();
+END_IF
+
+tempSensor.OffsetInCelsius := -25;
+temperature := tempSensor.InCelsius;
+offset := tempSensor.OffsetInCelsius;
+
+P_JuicePump();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

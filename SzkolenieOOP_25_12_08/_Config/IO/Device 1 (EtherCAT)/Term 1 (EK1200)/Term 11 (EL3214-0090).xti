@@ -19,6 +19,72 @@
 				<Elements>7</Elements>
 			</ArrayInfo>
 		</DataType>
+		<DataType>
+			<Name GUID="{1795D3C2-2709-7B8D-B946-7F78B0392E4B}" AutoDeleteType="true" ForceIecDecl="true">Status_5F498BC1_Plc</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>Underrange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Overrange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TxPDO_State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TxPDO_Toggle</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{F27EBF53-2CC3-ABEF-490A-6714DC309FEE}" AutoDeleteType="true" ForceIecDecl="true">MDP5001_320_I_A369A904</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>MDP5001_320_Status</Name>
+				<Type GUID="{1795D3C2-2709-7B8D-B946-7F78B0392E4B}">Status_5F498BC1_Plc</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MDP5001_320_Value</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{F27EBF52-2CC3-ABEF-490A-6714DC309FEE}" AutoDeleteType="true" ForceIecDecl="true">MDP5001_320_A369A904</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>MDP5001_320_Input</Name>
+				<Type GUID="{F27EBF53-2CC3-ABEF-490A-6714DC309FEE}">MDP5001_320_I_A369A904</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+				<Properties>
+					<Property>
+						<Name>TcDataArea</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+		</DataType>
 	</DataTypes>
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
@@ -26,7 +92,7 @@
 	<Box Id="11" BoxType="9099" BoxFlags="#x00000020">
 		<Name>__FILENAME__</Name>
 		<ImageId>1000</ImageId>
-		<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="15" FoeType="1" VendorId="#x00000002" ProductCode="#x0c8e3052" RevisionNo="#x0010005a" InfoDataAddr="true" RepeatSupport="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="1" Type="EL3214-0090 4Ch. Ana. Input PT100 (RTD), TwinSAFE SC" Desc="EL3214-0090">
+		<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="15" FoeType="1" VendorId="#x00000002" ProductCode="#x0c8e3052" RevisionNo="#x0010005a" InfoDataAddr="true" RepeatSupport="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" CreateDeviceDataType="true" DeviceDataTypePerChannel="true" MaxSlotCount="1" Type="EL3214-0090 4Ch. Ana. Input PT100 (RTD), TwinSAFE SC" Desc="EL3214-0090">
 			<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 			<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 			<SyncMan>001100002400000003000000000000000000001124010000</SyncMan>
@@ -140,6 +206,9 @@
 				</Entry>
 			</Pdo>
 			<CoeProfile ProfileNo="20976521"/>
+			<PlcDataTypes>
+				<PlcDataType GUID="{F27EBF52-2CC3-ABEF-490A-6714DC309FEE}">MDP5001_320_A369A904</PlcDataType>
+			</PlcDataTypes>
 			<Slot Name="TSC Connection">
 				<SlotData>0000000001000400000000000000000000000000000000000000000000000000</SlotData>
 				<ModuleIdent>3214</ModuleIdent>

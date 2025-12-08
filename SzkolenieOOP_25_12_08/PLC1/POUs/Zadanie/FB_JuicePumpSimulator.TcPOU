@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_JuicePumpSimulator" Id="{c2d82a57-4861-4d87-9875-c6cabd140d6d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_JuicePumpSimulator
+VAR_INPUT
+	bStart						: BOOL;
+	bReset						: BOOL;
+END_VAR
+VAR_OUTPUT
+	fPumpedJuiceInMililiters	: REAL;
+END_VAR
+VAR
+	rtReset						: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[rtReset( CLK := bReset );
+IF rtReset.Q THEN
+	fPumpedJuiceInMililiters := 0;
+END_IF
+
+IF bStart THEN
+	fPumpedJuiceInMililiters := fPumpedJuiceInMililiters + 10;		// 1kg / s
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

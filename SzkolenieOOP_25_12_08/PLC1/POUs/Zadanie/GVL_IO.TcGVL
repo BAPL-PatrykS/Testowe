@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="GVL_IO" Id="{42e2bec6-b320-48c0-8025-65b6595a2bff}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	//wejscia
+	bStart			AT%I*	: BOOL;
+	bRequest		AT%I*	: BOOL;
+	nJuiceSetter	AT%I*	: INT;
+	//wyścia
+	bLightSignal1	AT%Q*	: BOOL;
+	bLightSignal2	AT%Q*	: BOOL;
+	nLedDisplay		AT%Q*	: INT;
+	bPump			AT%Q*	: BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

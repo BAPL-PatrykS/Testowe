@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="P_JuicePump" Id="{5fec9547-7f1d-41e1-8d76-841130a6c419}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_JuicePump
+VAR
+	eState			: ( DISABLED, ENABLED, PUMPING );
+	fbPumpSimulator	: FB_JuicePumpSimulator;
+	rtStartButton	: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbPumpSimulator( bStart := GVL_IO.bPump );
+
+CASE eState OF
+	
+	DISABLED:
+		rtStartButton(CLK := GVL_IO.bStart);
+		IF rtStartButton.Q THEN
+			eState := ENABLED;
+		END_IF
+		
+	ENABLED:
+		GVL_IO.nLedDisplay := GVL_IO.nJuiceSetter;
+		
+	PUMPING:
+		;
+		
+END_CASE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

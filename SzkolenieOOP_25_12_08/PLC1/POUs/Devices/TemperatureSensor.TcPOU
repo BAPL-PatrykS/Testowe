@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="TemperatureSensor" Id="{0ed992bf-550f-455f-a941-ca8ef2257ea3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TemperatureSensor
+VAR
+	stInputData			: MDP5001_320_A369A904;
+	fOffsetInCelsius	: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Folder Name="Status" Id="{ce03e97b-142a-4b7a-a675-b138609ba55d}" />
+    <Folder Name="Temperature" Id="{08507647-4559-4ed5-86ad-63b7a9ffcad6}" />
+    <Property Name="Error" Id="{f1dcd065-a0e2-4942-b6be-52acd0d4f255}" FolderPath="Status\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Error : BOOL]]></Declaration>
+      <Get Name="Get" Id="{b7b1eee0-16eb-494f-b04a-3882a60ac41c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Error := stInputData.MDP5001_320_Input.MDP5001_320_Status.Error;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="InCelsius" Id="{36223012-ff55-4626-a711-0c8aed7cfcd9}" FolderPath="Temperature\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY InCelsius : REAL]]></Declaration>
+      <Get Name="Get" Id="{ce133ee0-e068-4933-9973-245aa1226702}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[InCelsius := (stInputData.MDP5001_320_Input.MDP5001_320_Value / 10.0) + fOffsetInCelsius;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="InFarenheit" Id="{edb74bdf-3d63-4abe-9041-430a1c05d349}" FolderPath="Temperature\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY InFarenheit : REAL]]></Declaration>
+      <Get Name="Get" Id="{4d177a04-b64d-4ebf-87f5-90b61682804a}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[InFarenheit := C_TO_F ( fX := InCelsius );]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="InKelvin" Id="{a1d1c50b-431b-48e5-94b1-e93378b24ba4}" FolderPath="Temperature\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY InKelvin : REAL]]></Declaration>
+      <Get Name="Get" Id="{85ef13f4-d165-4d4a-8f5c-538bda0361d2}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[InKelvin := C_TO_K ( fX := InCelsius );]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="InReaumur" Id="{f5fc9271-aac9-4df7-ac7a-4e16f483dd53}" FolderPath="Temperature\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY InReaumur : REAL]]></Declaration>
+      <Get Name="Get" Id="{d0171278-f08a-40bf-b826-6ec8f1f62072}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[InReaumur := C_TO_R ( fX := InCelsius );]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="OffsetInCelsius" Id="{a94aef9d-f647-407e-b6d4-cc80386fd3ed}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY OffsetInCelsius : REAL]]></Declaration>
+      <Get Name="Get" Id="{a3ae99d4-0c57-41b3-9f21-509ac98e195f}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[OffsetInCelsius := fOffsetInCelsius;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{e257288e-b46d-4f62-a857-ed0f3d739963}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fOffsetInCelsius := OffsetInCelsius;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="Overrange" Id="{61aade6e-6829-42c2-9b98-5ce3b9f9c02e}" FolderPath="Status\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Overrange : BOOL]]></Declaration>
+      <Get Name="Get" Id="{64bfaf44-59a1-46f8-b19e-8d346a414e5b}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Overrange := stInputData.MDP5001_320_Input.MDP5001_320_Status.Overrange;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Underrange" Id="{12278dfe-a928-4be5-947c-6989386e3bbf}" FolderPath="Status\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Underrange : BOOL]]></Declaration>
+      <Get Name="Get" Id="{3b14906d-682c-427a-9543-4b7b857b64e7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Underrange := stInputData.MDP5001_320_Input.MDP5001_320_Status.Underrange;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

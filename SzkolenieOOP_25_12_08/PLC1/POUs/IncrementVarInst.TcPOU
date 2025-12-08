@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="IncrementVarInst" Id="{1d541673-827b-4b8e-b6e0-283c8158f18c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK IncrementVarInst
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Increment" Id="{3d7c8690-d579-47e3-9748-3bb1390e3174}">
+      <Declaration><![CDATA[METHOD Increment : INT
+VAR_INST
+	nValue	: INT := 5;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nValue := nValue + 1;
+Increment := nValue;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

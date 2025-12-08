@@ -9,13 +9,27 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[tonPulseAcyclic();
+      <ST><![CDATA[// tonPulseAcyclic();
+// 
+// IF tonPulseAcyclic.Q THEN
+// 	SwitchOff();
+// 	tonPulseAcyclic(IN := FALSE);
+// END_IF]]></ST>
+    </Implementation>
+    <Method Name="Cyclic" Id="{224f8fb9-8aec-44dd-a993-3e3002545e72}">
+      <Declaration><![CDATA[METHOD Cyclic
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tonPulseAcyclic();
 
 IF tonPulseAcyclic.Q THEN
 	SwitchOff();
 	tonPulseAcyclic(IN := FALSE);
 END_IF]]></ST>
-    </Implementation>
+      </Implementation>
+    </Method>
     <Method Name="Pulse" Id="{1937db57-4c05-4d40-92ff-67b59d714bee}">
       <Declaration><![CDATA[METHOD Pulse : BOOL
 VAR_INPUT
