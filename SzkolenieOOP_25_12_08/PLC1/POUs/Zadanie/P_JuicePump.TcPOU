@@ -3,13 +3,20 @@
   <POU Name="P_JuicePump" Id="{5fec9547-7f1d-41e1-8d76-841130a6c419}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_JuicePump
 VAR
-	eState			: ( DISABLED, ENABLED, PUMPING );
-	fbPumpSimulator	: FB_JuicePumpSimulator;
-	rtStartButton	: R_TRIG;
+	eState						: ( DISABLED, ENABLED, PUMPING );
+	fbPumpSimulator				: FB_JuicePumpSimulator;
+	rtStartButton				: R_TRIG;
+	ftStartButton				: F_TRIG;
+	fJuiceSetpointInMililiters	: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbPumpSimulator( bStart := GVL_IO.bPump );
+ftStartButton( CLK := GVL_IO.bStart );
+IF ftStartButton.Q THEN
+	fbPumpSimulator( bReset := TRUE );
+	fbPumpSimulator( bReset := FALSE );
+END_IF
 
 CASE eState OF
 	
@@ -20,10 +27,23 @@ CASE eState OF
 		END_IF
 		
 	ENABLED:
+		GVL_IO.bLightSignal1 := TRUE;
 		GVL_IO.nLedDisplay := GVL_IO.nJuiceSetter;
+		IF GVL_IO.bRequest THEN
+			fJuiceSetpointInMililiters := F_Scale ( GVL_IO.nJuiceSetter, 0, 32767, 0, 10_000 );
+			eState := PUMPING;
+		END_IF
 		
 	PUMPING:
-		;
+		GVL_IO.nLedDisplay := TO_INT (F_Scale ( fJuiceSetpointInMililiters - fbPumpSimulator.fPumpedJuiceInMililiters, 0, 10_000, 0, 32767 ) );
+		GVL_IO.bLightSignal2 := TRUE;
+		GVL_IO.bPump := TRUE;
+		IF fbPumpSimulator.fPumpedJuiceInMililiters >= fJuiceSetpointInMililiters THEN
+			GVL_IO.bLightSignal1 := FALSE;
+			GVL_IO.bLightSignal2 := FALSE;
+			GVL_IO.bPump := FALSE;
+			eState := DISABLED;
+		END_IF
 		
 END_CASE]]></ST>
     </Implementation>

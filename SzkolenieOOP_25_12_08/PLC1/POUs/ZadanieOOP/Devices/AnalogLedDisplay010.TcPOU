@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="AnalogLedDisplay010" Id="{beca59ff-9607-4905-9f5a-6a96fef03655}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK AnalogLedDisplay010
+VAR
+	nOutput	AT%Q*	: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="DisplayedValue" Id="{5300ff47-5ebc-4a5e-8102-f41622631bf5}">
+      <Declaration><![CDATA[PROPERTY DisplayedValue : LREAL]]></Declaration>
+      <Get Name="Get" Id="{1806d3fc-ffc4-44b6-a979-610a4e37d266}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[DisplayedValue := F_Scale ( nOutput, 0, 32767, 0, 10 );]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="SetValue" Id="{bdac92a1-cbc3-4344-b710-6066affbd8c6}">
+      <Declaration><![CDATA[METHOD SetValue : BOOL
+VAR_INPUT
+	nValue	: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nOutput := nValue;
+
+SetValue := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

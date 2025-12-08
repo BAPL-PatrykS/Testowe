@@ -37,6 +37,15 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\ZadanieOOP\Devices\AnalogLedDisplay010.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\ZadanieOOP\Devices\ButtonNO.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\ZadanieOOP\Devices\Potentiometer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Zadanie\FB_JuicePumpSimulator.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -52,7 +61,9 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Devices" />
+    <Folder Include="POUs\ZadanieOOP" />
     <Folder Include="POUs\Zadanie" />
+    <Folder Include="POUs\ZadanieOOP\Devices" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

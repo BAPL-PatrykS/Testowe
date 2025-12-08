@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Potentiometer" Id="{a084b3b6-26cc-4a31-8637-da3898d58a44}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Potentiometer
+VAR
+	nInput	AT%I*	: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="ActualValue" Id="{c8135842-bb71-4358-8401-9fdd5fc3256a}">
+      <Declaration><![CDATA[PROPERTY ActualValue : INT]]></Declaration>
+      <Get Name="Get" Id="{7599e485-e8fa-4b6d-9a83-672ac6f443b8}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ActualValue := nInput;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="ActualValuePercent" Id="{35661c7a-00e3-4b0a-b66e-16f51f6800bb}">
+      <Declaration><![CDATA[PROPERTY ActualValuePercent : LREAL]]></Declaration>
+      <Get Name="Get" Id="{3900818d-9e8c-4148-847c-8ddf98549df6}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ActualValuePercent := F_Scale ( nInput, 0, 32767, 0, 100 );]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>
