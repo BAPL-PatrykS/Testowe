@@ -40,5 +40,67 @@ CASE eState OF
 END_CASE
 ]]></ST>
     </Implementation>
+    <Method Name="Disable" Id="{1e3c5ceb-0153-4b8c-9ea3-700faacaa6ac}">
+      <Declaration><![CDATA[METHOD Disable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[eState := DISABLED;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Enable" Id="{497b6319-3591-4ae7-80ca-b5ce422abe5c}">
+      <Declaration><![CDATA[METHOD Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[eState := ENABLED;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="IsDisabled" Id="{1865061b-bc09-4052-85d3-935e08fd9a37}">
+      <Declaration><![CDATA[PROPERTY IsDisabled : BOOL]]></Declaration>
+      <Get Name="Get" Id="{25809d9d-b7bd-4ab9-a65b-492e51fdc7f2}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsDisabled := eState = DISABLED;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="IsEnabled" Id="{b6d963a5-7c14-466e-bbcb-f2652bc1da7c}">
+      <Declaration><![CDATA[PROPERTY IsEnabled : BOOL]]></Declaration>
+      <Get Name="Get" Id="{71a3abb8-4628-4e75-b1c4-a868e3e355fb}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsEnabled := eState = ENABLED;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="IsPumping" Id="{a312785a-3bbf-4f14-b0a9-fdcb2e5e66ca}">
+      <Declaration><![CDATA[PROPERTY IsPumping : BOOL]]></Declaration>
+      <Get Name="Get" Id="{fab194c9-7642-47b3-87ef-57bf3c21532b}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsPumping := eState = PUMPING;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="IsPumpingComplete" Id="{4ad76a02-0bcf-46e9-b2e3-02f9b0513c61}">
+      <Declaration><![CDATA[PROPERTY IsPumpingComplete : BOOL]]></Declaration>
+      <Get Name="Get" Id="{31f9fd02-8a2e-4e49-8361-b87a3d69366c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsPumpingComplete := eState = PUMPING_COMPLETE;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
   </POU>
 </TcPlcObject>

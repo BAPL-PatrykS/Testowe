@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="P_Machine" Id="{0fd8fc40-2ee5-42de-b55f-c83385416cf6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_Machine
+VAR
+	startButton			: ButtonNO;
+	appleJuiceContoller	: PumpController;
+	signalTower			: SignalTower;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[appleJuiceContoller();
+
+IF startButton.RisingTrigger THEN
+	appleJuiceContoller.Enable();
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

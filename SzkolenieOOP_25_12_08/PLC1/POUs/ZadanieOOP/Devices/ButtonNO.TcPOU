@@ -4,6 +4,7 @@
     <Declaration><![CDATA[FUNCTION_BLOCK ButtonNO
 VAR
 	bInput	AT%I*	: BOOL;
+	rtInput			: R_TRIG;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -28,6 +29,19 @@ END_VAR
 ]]></Declaration>
         <Implementation>
           <ST><![CDATA[IsReleased := NOT IsPressed;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="RisingTrigger" Id="{fee4ae38-22e9-4ec8-a98c-8370d3268195}">
+      <Declaration><![CDATA[PROPERTY RisingTrigger : BOOL]]></Declaration>
+      <Get Name="Get" Id="{d844dd31-6472-4536-898c-c8c68b35ff16}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[rtInput(CLK := IsPressed);
+
+RisingTrigger := rtInput.Q;]]></ST>
         </Implementation>
       </Get>
     </Property>

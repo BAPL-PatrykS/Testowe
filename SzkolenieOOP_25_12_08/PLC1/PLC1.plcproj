@@ -55,6 +55,9 @@
     <Compile Include="POUs\ZadanieOOP\Modules\VolumePump.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\ZadanieOOP\P_Machine.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Zadanie\FB_JuicePumpSimulator.TcPOU">
       <SubType>Code</SubType>
     </Compile>

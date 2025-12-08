@@ -55,7 +55,8 @@ tempSensor.OffsetInCelsius := -25;
 temperature := tempSensor.InCelsius;
 offset := tempSensor.OffsetInCelsius;
 
-// P_JuicePump();]]></ST>
+// P_JuicePump();
+P_Machine();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

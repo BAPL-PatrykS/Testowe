@@ -24,8 +24,20 @@
 				<Link VarA="PlcTask Inputs^MAIN.tempSensor.stInputData.MDP5001_320_Input^MDP5001_320_Status" VarB="RTD Inputs Channel 1^Status"/>
 				<Link VarA="PlcTask Inputs^MAIN.tempSensor.stInputData.MDP5001_320_Input^MDP5001_320_Value" VarB="RTD Inputs Channel 1^Value"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1004)">
+				<Link VarA="PlcTask Inputs^P_Machine.appleJuiceContoller.requestButton.bInput" VarB="Channel 3^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^P_Machine.startButton.bInput" VarB="Channel 1^Input" Size="1"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL2008)">
-				<Link VarA="PlcTask Outputs^MAIN.motorRelay.bOutput" VarB="Channel 2^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^P_Machine.appleJuiceContoller.volumePump.pump.bOutput" VarB="Channel 3^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^P_Machine.signalTower.lightGreen.bOutput" VarB="Channel 1^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^P_Machine.signalTower.lightRed.bOutput" VarB="Channel 2^Output" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL3064)">
+				<Link VarA="PlcTask Inputs^P_Machine.appleJuiceContoller.juiceSetter.nInput" VarB="AI Standard Channel 1^Value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL4008)">
+				<Link VarA="PlcTask Outputs^P_Machine.appleJuiceContoller.ledDisplay.nOutput" VarB="AO Outputs Channel 1^Analog output"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
