@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="ButtonNC" Id="{da357938-2c55-49d2-ba2f-8a771a077471}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK ButtonNC
+    <Declaration><![CDATA[FUNCTION_BLOCK ButtonNC IMPLEMENTS I_Button
 VAR
 	bInput	AT%I*	: BOOL;
 	rtInput			: R_TRIG;

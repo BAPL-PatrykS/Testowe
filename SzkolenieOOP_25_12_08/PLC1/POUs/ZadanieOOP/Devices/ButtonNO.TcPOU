@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="ButtonNO" Id="{9648fb86-2586-4f86-af45-2503960afbd3}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK ButtonNO
+    <Declaration><![CDATA[FUNCTION_BLOCK ButtonNO IMPLEMENTS I_Button
 VAR
 	bInput	AT%I*	: BOOL;
 	rtInput			: R_TRIG;
@@ -21,9 +21,9 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="IsReleased" Id="{a989c524-856f-410a-91b7-e81596cf9c4d}">
+    <Property Name="IsReleased" Id="{9c52060c-62d5-4c3b-bcb0-25b425f1e19d}">
       <Declaration><![CDATA[PROPERTY IsReleased : BOOL]]></Declaration>
-      <Get Name="Get" Id="{402f5afa-cbb7-44b0-93f6-071a8ad43338}">
+      <Get Name="Get" Id="{a4853a07-d314-41a5-a91f-7e59d26a4507}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>

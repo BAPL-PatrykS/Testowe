@@ -3,5 +3,23 @@
   <Itf Name="I_Button" Id="{d489b1a5-a2f1-4e4c-bd4f-d64b53deabd3}">
     <Declaration><![CDATA[INTERFACE I_Button
 ]]></Declaration>
+    <Property Name="IsPressed" Id="{c5fef8e3-b7de-450e-8669-299152d81b7d}">
+      <Declaration><![CDATA[PROPERTY IsPressed : BOOL]]></Declaration>
+      <Get Name="Get" Id="{473dc3c8-bcb4-4776-abd5-54dccfd466fb}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="IsReleased" Id="{8e1dc4a3-b2bb-457b-8eb1-dfcc1b45ab27}">
+      <Declaration><![CDATA[PROPERTY IsReleased : BOOL]]></Declaration>
+      <Get Name="Get" Id="{3d0f138f-fc04-4888-b61d-d086135a7138}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="RisingTrigger" Id="{9710214a-b738-4d97-98ac-ff35a60f2368}">
+      <Declaration><![CDATA[PROPERTY RisingTrigger : BOOL]]></Declaration>
+      <Get Name="Get" Id="{d3a539f2-4c5f-48c3-a2a7-c8c4d8425de2}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
   </Itf>
 </TcPlcObject>

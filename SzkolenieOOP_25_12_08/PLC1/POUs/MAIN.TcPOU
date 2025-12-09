@@ -13,12 +13,20 @@ VAR
 	tempSensor	: TemperatureSensor;
 	temperature	: REAL;
 	offset		: REAL;
+	
 	testButton	: ButtonNC;
 	testTrigger	: BOOL;
+	
 	testFbInit	: TestFbInit(wartosc := 7);
+	
 	pInt		: REFERENCE TO INT;
 	nInt		: INT;
 	nInt2		: INT;
+	
+	itfButton	: I_Button;
+	buttonNo	: ButtonNO;
+	buttonNc	: ButtonNC;
+	bIsPressed	: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -72,7 +80,14 @@ pInt REF= nInt2;
 
 IF __ISVALIDREF(pInt) THEN
 	nInt := pInt;
-END_IF]]></ST>
+END_IF
+
+itfButton := buttonNc;
+
+IF itfButton <> 0 AND_THEN itfButton.IsPressed THEN
+	bIsPressed := TRUE;
+END_IF
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
