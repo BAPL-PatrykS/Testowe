@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Testowy3" Id="{4577185b-52ff-4094-ab7e-f3269012a1ad}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Testowy3
+VAR
+	bTest3: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
