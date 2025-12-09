@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="PumpControllerWithLogger" Id="{b7cf997e-ba26-480c-aaa0-161e852d283c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PumpControllerWithLogger EXTENDS PumpController
+VAR
+	stringBuilder	: StringBuilder;
+	logDataTrigger	: R_TRIG;
+END_VAR
+VAR_STAT
+	nCycles			: UINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SUPER^();
+
+LogToAds();]]></ST>
+    </Implementation>
+    <Method Name="LogToAds" Id="{1da23e9a-06ab-4276-b997-25445eb8afad}">
+      <Declaration><![CDATA[METHOD PRIVATE LogToAds : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[logDataTrigger(CLK := IsPumpingComplete);
+
+IF logDataTrigger.Q THEN
+	nCycles := nCycles + 1;
+	
+	stringBuilder.Reset()
+		.Append('Lacznie wykonano: ')
+		.Append(TO_STRING(nCycles))
+		.Append(' cykli');
+		
+	ADSLOGSTR( msgCtrlMask := ADSLOG_MSGTYPE_LOG, msgFmtStr := stringBuilder.ToString(), strArg := '' );
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

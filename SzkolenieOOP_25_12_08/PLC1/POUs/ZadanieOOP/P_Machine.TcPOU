@@ -5,8 +5,8 @@
 VAR
 	startButton			: ButtonNO;
 	requestButton		: ButtonNO;
-	appleJuiceContoller	: PumpController(requestButton, 0, 10_000);
-	orangeJuiceContoller: PumpController(requestButton, 0, 5_000);
+	appleJuiceContoller	: PumpControllerWithLogger(requestButton, 0, 10_000);
+	orangeJuiceContoller: PumpControllerWithLogger(requestButton, 0, 5_000);
 	signalTower			: SignalTower;
 END_VAR
 ]]></Declaration>

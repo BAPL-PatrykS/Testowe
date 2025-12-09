@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="P_PackML" Id="{69c9c407-efe1-48a4-a030-598eddc6bb34}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_PackML
+VAR
+	machine1	: Machine;
+	eModeCommand: E_PMLProtectedUnitMode;
+	eCommand	: E_PMLCommand;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[machine1(
+	eModeCommand	:= eModeCommand, 
+	eCommand		:= eCommand, 
+	eMode			=> , 
+	eState			=> , 
+	bUndefinedDone	=> , 
+	bInvalidModeCommandOut=> , 
+	bChangeIntoProduction=> );]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

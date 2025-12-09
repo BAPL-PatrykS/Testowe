@@ -98,7 +98,7 @@ END_IF
 // 			.Append(' Temperatura zbyt wysoka')
 // 			.ToString();
 
-sTekst := alarm.Reset().Append('test').Reset().Append().]]></ST>
+P_PackML();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -10,7 +10,7 @@ END_VAR
       <ST><![CDATA[]]></ST>
     </Implementation>
     <Method Name="Append" Id="{572aceee-1cd3-4a22-8a0a-4bfb47e5a262}">
-      <Declaration><![CDATA[METHOD Append : I_LimitedStringBuilder
+      <Declaration><![CDATA[METHOD Append : I_StringBuilder
 VAR_INPUT
 	sText	: T_MaxString;
 END_VAR

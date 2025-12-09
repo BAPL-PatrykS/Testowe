@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Machine" Id="{123c7c08-1b03-4b8d-8697-74435cc4f840}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Machine EXTENDS FB_Generic
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SUPER^();]]></ST>
+    </Implementation>
+    <Method Name="M_Aborting" Id="{9a7e0217-86ac-41de-9879-206cf8b6c989}">
+      <Declaration><![CDATA[METHOD M_Aborting
+VAR_INST
+	bTest	: BOOL;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bTest THEN
+	bTest := FALSE;
+	M_StateComplete();
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Execute" Id="{0418fa37-a42f-4b51-8426-e3bfff63d3fa}">
+      <Declaration><![CDATA[METHOD M_Execute
+VAR_INST
+	bTest	: BOOL;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bTest THEN
+	bTest := FALSE;
+	M_StateComplete();
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_StateComplete" Id="{dde11c87-adf4-44cf-ac55-3148d165f5a4}">
+      <Declaration><![CDATA[METHOD M_StateComplete
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SUPER^.M_StateComplete();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
