@@ -59,6 +59,9 @@
     <Compile Include="POUs\Testowy.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Testowy2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\ZadanieOOP\Devices\AnalogLedDisplay010.TcPOU">
       <SubType>Code</SubType>
     </Compile>
