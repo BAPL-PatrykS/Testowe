@@ -52,6 +52,9 @@
     <Compile Include="POUs\ZadanieOOP\Devices\Potentiometer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\ZadanieOOP\I_Button.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\ZadanieOOP\Modules\PumpController.TcPOU">
       <SubType>Code</SubType>
     </Compile>

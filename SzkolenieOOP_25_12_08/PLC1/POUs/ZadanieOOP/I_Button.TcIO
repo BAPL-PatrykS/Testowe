@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_Button" Id="{d489b1a5-a2f1-4e4c-bd4f-d64b53deabd3}">
+    <Declaration><![CDATA[INTERFACE I_Button
+]]></Declaration>
+  </Itf>
+</TcPlcObject>
