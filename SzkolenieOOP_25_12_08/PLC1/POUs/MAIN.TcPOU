@@ -92,12 +92,13 @@ IF itfButton <> 0 AND_THEN itfButton.IsPressed THEN
 	bIsPressed := TRUE;
 END_IF
 
-sTekst := alarm.Reset()
-			.Append('Alarm nr: ')
-			.Append(TO_STRING(nNrAlarmu))
-			.Append(' Temperatura zbyt wysoka')
-			.ToString();
-]]></ST>
+// sTekst := alarm.Reset()
+// 			.Append('Alarm nr: ')
+// 			.Append(TO_STRING(nNrAlarmu))
+// 			.Append(' Temperatura zbyt wysoka')
+// 			.ToString();
+
+sTekst := alarm.Reset().Append('test').Reset().Append().]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

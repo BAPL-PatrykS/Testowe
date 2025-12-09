@@ -1,23 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <Itf Name="I_StringBuilder" Id="{fcf763eb-9252-4017-a88f-d8e76fd5cb3c}">
+  <Itf Name="I_StringBuilder" Id="{6b364cdd-797f-4330-bd1d-3e4d4a7b2a6d}">
     <Declaration><![CDATA[INTERFACE I_StringBuilder
 ]]></Declaration>
-    <Method Name="Append" Id="{02be178d-9282-45e4-9d7f-cae966472eb0}">
+    <Method Name="Append" Id="{f020974a-8325-40d4-8559-0fe02bf4ddfe}">
       <Declaration><![CDATA[METHOD Append : I_StringBuilder
 VAR_INPUT
 	sText	: T_MaxString;
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="Reset" Id="{3551b35a-fbb0-4435-804f-a402d1cc4ae0}">
-      <Declaration><![CDATA[METHOD Reset : I_StringBuilder
+    <Method Name="Reset" Id="{4545a6ae-d943-4de7-b047-70e643eb9bd6}">
+      <Declaration><![CDATA[METHOD Reset : I_LimitedStringBuilder
 VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="ToString" Id="{5460b69e-09ae-43b2-9de8-f996467d7fc0}">
+    <Method Name="ToLowerCase" Id="{b0e86b3a-1003-40c0-addd-2d2183df650c}">
+      <Declaration><![CDATA[METHOD ToLowerCase : I_StringBuilder
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="ToString" Id="{5f2a8976-38b0-43b2-9726-0e94f7bc5c25}">
       <Declaration><![CDATA[METHOD ToString : T_MaxString
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="ToUpperCase" Id="{85955b9d-b68b-47ec-ae6d-aaecbc6d7e1c}">
+      <Declaration><![CDATA[METHOD ToUpperCase : I_StringBuilder
 VAR_INPUT
 END_VAR
 ]]></Declaration>
