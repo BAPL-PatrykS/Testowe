@@ -13,6 +13,12 @@ VAR
 	tempSensor	: TemperatureSensor;
 	temperature	: REAL;
 	offset		: REAL;
+	testButton	: ButtonNC;
+	testTrigger	: BOOL;
+	testFbInit	: TestFbInit(wartosc := 7);
+	pInt		: REFERENCE TO INT;
+	nInt		: INT;
+	nInt2		: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -56,7 +62,17 @@ temperature := tempSensor.InCelsius;
 offset := tempSensor.OffsetInCelsius;
 
 // P_JuicePump();
-P_Machine();]]></ST>
+P_Machine();
+
+IF testButton.RisingTrigger THEN
+	testTrigger := TRUE;
+END_IF
+
+pInt REF= nInt2;
+
+IF __ISVALIDREF(pInt) THEN
+	nInt := pInt;
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

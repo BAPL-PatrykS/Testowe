@@ -4,16 +4,34 @@
     <Declaration><![CDATA[PROGRAM P_Machine
 VAR
 	startButton			: ButtonNO;
-	appleJuiceContoller	: PumpController;
+	appleJuiceContoller	: PumpController(0, 10_000);
+	orangeJuiceContoller: PumpController(0, 5_000);
 	signalTower			: SignalTower;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[appleJuiceContoller();
+orangeJuiceContoller();
 
 IF startButton.RisingTrigger THEN
 	appleJuiceContoller.Enable();
-END_IF]]></ST>
+	orangeJuiceContoller.Enable();
+END_IF
+
+IF appleJuiceContoller.IsDisabled THEN
+	signalTower.SwitchOffGreen();
+	signalTower.SwitchOffRed();
+ELSIF appleJuiceContoller.IsEnabled THEN
+	signalTower.SwitchOnGreen();
+	signalTower.SwitchOffRed();
+ELSIF appleJuiceContoller.IsPumping THEN
+	signalTower.SwitchOnGreen();
+	signalTower.SwitchOnRed();
+ELSIF appleJuiceContoller.IsPumpingComplete THEN
+	signalTower.SwitchOnGreen();
+	signalTower.SwitchOffRed();
+END_IF
+	]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -37,10 +37,16 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\TestFbInit.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\ZadanieOOP\Devices\AnalogLedDisplay010.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\ZadanieOOP\Devices\ButtonNO.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\ZadanieOOP\Devices\ButtonNC.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\ZadanieOOP\Devices\Potentiometer.TcPOU">

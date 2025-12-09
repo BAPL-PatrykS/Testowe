@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ButtonNC" Id="{da357938-2c55-49d2-ba2f-8a771a077471}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ButtonNC
+VAR
+	bInput	AT%I*	: BOOL;
+	rtInput			: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="IsPressed" Id="{0a66708b-5b01-4a9b-ae62-0f65456f2d04}">
+      <Declaration><![CDATA[PROPERTY IsPressed : BOOL]]></Declaration>
+      <Get Name="Get" Id="{18b6dc50-df16-49ca-9718-c45006b8f1b4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsPressed := NOT bInput;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="IsReleased" Id="{b65fba39-4730-4eab-9747-9da7dcb91829}">
+      <Declaration><![CDATA[PROPERTY IsReleased : BOOL]]></Declaration>
+      <Get Name="Get" Id="{53f7de75-988a-4e42-8c0f-a07c837870e3}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsReleased := NOT IsPressed;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="RisingTrigger" Id="{cbfbe90a-e385-4624-af03-1bb36c4f2056}">
+      <Declaration><![CDATA[PROPERTY RisingTrigger : BOOL]]></Declaration>
+      <Get Name="Get" Id="{866736ee-d9b7-4163-939b-e9443a1f06b9}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[rtInput(CLK := IsPressed);
+
+RisingTrigger := rtInput.Q;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

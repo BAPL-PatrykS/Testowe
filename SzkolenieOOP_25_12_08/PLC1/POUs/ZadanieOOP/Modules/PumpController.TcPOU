@@ -9,6 +9,8 @@ VAR
 	juiceSetter					: Potentiometer;
 	ledDisplay					: AnalogLedDisplay010;
 	fJuiceSetpointInMililiters	: LREAL;
+	fMinSetRangeInMililiters	: LREAL;
+	fMaxSetRangeInMililiters	: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -22,12 +24,12 @@ CASE eState OF
 	ENABLED:
 		ledDisplay.SetValue(juiceSetter.ActualValue);
 		IF requestButton.IsPressed THEN
-			fJuiceSetpointInMililiters := F_Scale ( juiceSetter.ActualValue, 0, 32767, 0, 10_000 );
+			fJuiceSetpointInMililiters := F_Scale ( juiceSetter.ActualValue, 0, 32767, fMinSetRangeInMililiters, fMaxSetRangeInMililiters );
 			eState := PUMPING;
 		END_IF
 		
 	PUMPING:
-		ledDisplay.SetValue( TO_INT (F_Scale ( fJuiceSetpointInMililiters - volumePump.PumpedJuiceInMililiters, 0, 10_000, 0, 32767 ) ) );
+		ledDisplay.SetValue( TO_INT (F_Scale ( fJuiceSetpointInMililiters - volumePump.PumpedJuiceInMililiters, fMinSetRangeInMililiters, fMaxSetRangeInMililiters, 0, 32767 ) ) );
 		volumePump.Start();
 		IF volumePump.PumpedJuiceInMililiters >= fJuiceSetpointInMililiters THEN
 			volumePump.Reset();
@@ -56,6 +58,24 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[eState := ENABLED;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_Init" Id="{fa7fc71d-e7e3-4466-99fc-835ddc8d2f31}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+	fMinSetRangeInMililiters	: LREAL;
+	fMaxSetRangeInMililiters	: LREAL;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.fMinSetRangeInMililiters := LIMIT(0, fMinSetRangeInMililiters, 10_000);
+THIS^.fMaxSetRangeInMililiters := LIMIT(0, fMaxSetRangeInMililiters, 10_000);
+]]></ST>
       </Implementation>
     </Method>
     <Property Name="IsDisabled" Id="{1865061b-bc09-4052-85d3-935e08fd9a37}">
