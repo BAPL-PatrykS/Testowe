@@ -4,8 +4,9 @@
     <Declaration><![CDATA[PROGRAM P_Machine
 VAR
 	startButton			: ButtonNO;
-	appleJuiceContoller	: PumpController(0, 10_000);
-	orangeJuiceContoller: PumpController(0, 5_000);
+	requestButton		: ButtonNO;
+	appleJuiceContoller	: PumpController(requestButton, 0, 10_000);
+	orangeJuiceContoller: PumpController(requestButton, 0, 5_000);
 	signalTower			: SignalTower;
 END_VAR
 ]]></Declaration>

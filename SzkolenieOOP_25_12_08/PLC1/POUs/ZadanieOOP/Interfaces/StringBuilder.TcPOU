@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="StringBuilder" Id="{669f74e3-673d-4ec6-bbfb-94c760c8d03e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK StringBuilder IMPLEMENTS I_StringBuilder
+VAR
+	sBuiltString	: T_MaxString;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Append" Id="{572aceee-1cd3-4a22-8a0a-4bfb47e5a262}">
+      <Declaration><![CDATA[METHOD Append : I_StringBuilder
+VAR_INPUT
+	sText	: T_MaxString;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sBuiltString := CONCAT(sBuiltString, sText);
+
+Append := THIS^;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{4dbda51d-7d32-41b5-b01c-2fef5d491479}">
+      <Declaration><![CDATA[METHOD Reset : I_StringBuilder
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sBuiltString := '';
+
+Reset := THIS^;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ToString" Id="{aca6efb4-2aaa-4f24-83d0-e89f1255cdfd}">
+      <Declaration><![CDATA[METHOD ToString : T_MaxString
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[ToString := sBuiltString;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

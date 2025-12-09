@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_StringBuilder" Id="{fcf763eb-9252-4017-a88f-d8e76fd5cb3c}">
+    <Declaration><![CDATA[INTERFACE I_StringBuilder
+]]></Declaration>
+    <Method Name="Append" Id="{02be178d-9282-45e4-9d7f-cae966472eb0}">
+      <Declaration><![CDATA[METHOD Append : I_StringBuilder
+VAR_INPUT
+	sText	: T_MaxString;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Reset" Id="{3551b35a-fbb0-4435-804f-a402d1cc4ae0}">
+      <Declaration><![CDATA[METHOD Reset : I_StringBuilder
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="ToString" Id="{5460b69e-09ae-43b2-9de8-f996467d7fc0}">
+      <Declaration><![CDATA[METHOD ToString : T_MaxString
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

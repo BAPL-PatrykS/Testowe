@@ -5,7 +5,7 @@
 VAR
 	volumePump					: VolumePump;
 	eState						: ( DISABLED, ENABLED, PUMPING, PUMPING_COMPLETE );
-	requestButton				: ButtonNO;
+	requestButton				: I_Button;
 	juiceSetter					: Potentiometer;
 	ledDisplay					: AnalogLedDisplay010;
 	fJuiceSetpointInMililiters	: LREAL;
@@ -69,11 +69,13 @@ METHOD FB_Init: BOOL
 VAR_INPUT
     bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
     bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+	requestButton				: I_Button;
 	fMinSetRangeInMililiters	: LREAL;
 	fMaxSetRangeInMililiters	: LREAL;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.fMinSetRangeInMililiters := LIMIT(0, fMinSetRangeInMililiters, 10_000);
+        <ST><![CDATA[THIS^.requestButton := requestButton;
+THIS^.fMinSetRangeInMililiters := LIMIT(0, fMinSetRangeInMililiters, 10_000);
 THIS^.fMaxSetRangeInMililiters := LIMIT(0, fMaxSetRangeInMililiters, 10_000);
 ]]></ST>
       </Implementation>

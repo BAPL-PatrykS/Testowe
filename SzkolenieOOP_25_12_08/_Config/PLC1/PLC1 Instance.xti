@@ -26,8 +26,7 @@
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1004)">
 				<Link VarA="PlcTask Inputs^MAIN.testButton.bInput" VarB="Channel 2^Input" Size="1"/>
-				<Link VarA="PlcTask Inputs^P_Machine.appleJuiceContoller.requestButton.bInput" VarB="Channel 3^Input" Size="1"/>
-				<Link VarA="PlcTask Inputs^P_Machine.orangeJuiceContoller.requestButton.bInput" VarB="Channel 4^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^P_Machine.requestButton.bInput" VarB="Channel 3^Input" Size="1"/>
 				<Link VarA="PlcTask Inputs^P_Machine.startButton.bInput" VarB="Channel 1^Input" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL2008)">
